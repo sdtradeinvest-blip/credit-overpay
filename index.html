@@ -2,7 +2,7 @@
 <html lang="ru">
 <head>
   <meta charset="UTF-8">
-  <title>Сколько вы реально переплатите</title>
+  <title>Г‘ГЄГ®Г«ГјГЄГ® ГўГ» Г°ГҐГ Г«ГјГ­Г® ГЇГҐГ°ГҐГЇГ«Г ГІГЁГІГҐ</title>
   <style>
     body { font-family: Arial, sans-serif; background:#f6f6f6; }
     .box { max-width:420px; margin:40px auto; background:#fff; padding:20px; border-radius:8px; }
@@ -17,18 +17,18 @@
 <body>
 
 <div class="box">
-  <h1>Сколько вы реально переплатите</h1>
+  <h1>Г‘ГЄГ®Г«ГјГЄГ® ГўГ» Г°ГҐГ Г«ГјГ­Г® ГЇГҐГ°ГҐГЇГ«Г ГІГЁГІГҐ</h1>
 
-  <label>Сумма кредита</label>
+  <label>Г‘ГіГ¬Г¬Г  ГЄГ°ГҐГ¤ГЁГІГ </label>
   <input type="number" id="amount">
 
-  <label>Годовая ставка (%)</label>
+  <label>ГѓГ®Г¤Г®ГўГ Гї Г±ГІГ ГўГЄГ  (%)</label>
   <input type="number" id="rate">
 
-  <label>Срок (в месяцах)</label>
+  <label>Г‘Г°Г®ГЄ (Гў Г¬ГҐГ±ГїГ¶Г Гµ)</label>
   <input type="number" id="months">
 
-  <button onclick="calculate()">Посчитать</button>
+  <button onclick="calculate()">ГЏГ®Г±Г·ГЁГІГ ГІГј</button>
 
   <div id="output"></div>
 </div>
@@ -40,7 +40,7 @@ function calculate() {
   let n = parseInt(document.getElementById("months").value);
 
   if (!P || !r || !n) {
-    alert("Заполните все поля");
+    alert("Г‡Г ГЇГ®Г«Г­ГЁГІГҐ ГўГ±ГҐ ГЇГ®Г«Гї");
     return;
   }
 
@@ -50,13 +50,13 @@ function calculate() {
 
   document.getElementById("output").innerHTML = `
     <div class="result">
-      <b>Ежемесячный платёж:</b> ${payment.toFixed(2)}<br>
-      <b>Переплата:</b> ${overpay.toFixed(2)}
+      <b>Г…Г¦ГҐГ¬ГҐГ±ГїГ·Г­Г»Г© ГЇГ«Г ГІВёГ¦:</b> ${payment.toFixed(2)}<br>
+      <b>ГЏГҐГ°ГҐГЇГ«Г ГІГ :</b> ${overpay.toFixed(2)}
     </div>
 
     <div class="paywall">
-      <b>Хотите подробный расчёт?</b><br>
-      Таблица платежей, сравнение вариантов и PDF — после оплаты.
+      <b>Г•Г®ГІГЁГІГҐ ГЇГ®Г¤Г°Г®ГЎГ­Г»Г© Г°Г Г±Г·ВёГІ?</b><br>
+      Г’Г ГЎГ«ГЁГ¶Г  ГЇГ«Г ГІГҐГ¦ГҐГ©, Г±Г°Г ГўГ­ГҐГ­ГЁГҐ ГўГ Г°ГЁГ Г­ГІГ®Гў ГЁ PDF вЂ” ГЇГ®Г±Г«ГҐ Г®ГЇГ«Г ГІГ».
     </div>
   `;
 }
@@ -64,3 +64,4 @@ function calculate() {
 
 </body>
 </html>
+
