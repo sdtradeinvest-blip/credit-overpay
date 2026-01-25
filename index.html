@@ -2,45 +2,115 @@
 <html lang="ru">
 <head>
   <meta charset="UTF-8">
-  <title>Ñêîëüêî âû ðåàëüíî ïåðåïëàòèòå</title>
+  <title>Переплата по кредиту — калькулятор</title>
+
   <style>
-    body { font-family: Arial, sans-serif; background:#f6f6f6; }
-    .box { max-width:420px; margin:40px auto; background:#fff; padding:20px; border-radius:8px; }
-    h1 { font-size:20px; margin-bottom:10px; }
-    label { display:block; margin-top:10px; }
-    input { width:100%; padding:8px; margin-top:5px; }
-    button { margin-top:15px; padding:10px; width:100%; font-size:16px; cursor:pointer; }
-    .result { margin-top:15px; background:#eef; padding:10px; border-radius:6px; }
-    .paywall { margin-top:15px; background:#ffe; padding:10px; border-radius:6px; }
+    body {
+      font-family: Arial, sans-serif;
+      background: #f6f6f6;
+      margin: 0;
+      padding: 0;
+    }
+
+    .box {
+      max-width: 420px;
+      margin: 40px auto;
+      background: #ffffff;
+      padding: 20px;
+      border-radius: 8px;
+    }
+
+    h1 {
+      font-size: 22px;
+      margin-bottom: 10px;
+    }
+
+    h2 {
+      font-size: 20px;
+      margin-bottom: 10px;
+    }
+
+    p {
+      font-size: 14px;
+      line-height: 1.4;
+    }
+
+    label {
+      display: block;
+      margin-top: 10px;
+      font-size: 14px;
+    }
+
+    input {
+      width: 100%;
+      padding: 8px;
+      margin-top: 5px;
+    }
+
+    button {
+      margin-top: 15px;
+      padding: 10px;
+      width: 100%;
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+    .result {
+      margin-top: 15px;
+      background: #eef;
+      padding: 10px;
+      border-radius: 6px;
+    }
+
+    .paywall {
+      margin-top: 15px;
+      background: #ffe;
+      padding: 10px;
+      border-radius: 6px;
+      font-size: 14px;
+    }
   </style>
 </head>
+
 <body>
 
 <div class="box">
-  <h1>Ñêîëüêî âû ðåàëüíî ïåðåïëàòèòå</h1>
 
-  <label>Ñóììà êðåäèòà</label>
-  <input type="number" id="amount">
+  <h2>Сколько вы реально переплачиваете банку?</h2>
+  <p>
+    Большинство людей не понимают, сколько денег теряют на процентах.
+    Этот калькулятор за 10 секунд покажет реальную переплату по кредиту
+    и подскажет, как снизить её законным способом.
+  </p>
 
-  <label>Ãîäîâàÿ ñòàâêà (%)</label>
-  <input type="number" id="rate">
+  <h1>Калькулятор переплаты по кредиту</h1>
 
-  <label>Ñðîê (â ìåñÿöàõ)</label>
-  <input type="number" id="months">
+  <label>Сумма кредита (₽)</label>
+  <input id="sum" type="number" placeholder="Например: 500000">
 
-  <button onclick="calculate()">Ïîñ÷èòàòü</button>
+  <label>Процентная ставка (% годовых)</label>
+  <input id="rate" type="number" placeholder="Например: 18">
+
+  <label>Срок кредита (месяцы)</label>
+  <input id="months" type="number" placeholder="Например: 60">
+
+  <button onclick="calc()">Рассчитать</button>
 
   <div id="output"></div>
+
+  <p><b>Важно:</b> если переплата кажется слишком большой — это не ошибка.
+  Банк зарабатывает именно так.</p>
+
 </div>
 
 <script>
-function calculate() {
-  let P = parseFloat(document.getElementById("amount").value);
-  let r = parseFloat(document.getElementById("rate").value) / 100 / 12;
-  let n = parseInt(document.getElementById("months").value);
+function calc() {
+  let P = Number(document.getElementById("sum").value);
+  let r = Number(document.getElementById("rate").value) / 100 / 12;
+  let n = Number(document.getElementById("months").value);
 
   if (!P || !r || !n) {
-    alert("Çàïîëíèòå âñå ïîëÿ");
+    document.getElementById("output").innerHTML = "Заполните все поля";
     return;
   }
 
@@ -50,13 +120,14 @@ function calculate() {
 
   document.getElementById("output").innerHTML = `
     <div class="result">
-      <b>Åæåìåñÿ÷íûé ïëàò¸æ:</b> ${payment.toFixed(2)}<br>
-      <b>Ïåðåïëàòà:</b> ${overpay.toFixed(2)}
+      <b>Ежемесячный платёж:</b> ${payment.toFixed(2)} ₽<br>
+      <b>Переплата:</b> ${overpay.toFixed(2)} ₽
     </div>
 
     <div class="paywall">
-      <b>Õîòèòå ïîäðîáíûé ðàñ÷¸ò?</b><br>
-      Òàáëèöà ïëàòåæåé, ñðàâíåíèå âàðèàíòîâ è PDF — ïîñëå îïëàòû.
+      <b>Как снизить переплату:</b><br>
+      Есть законные способы уменьшить проценты.
+      Подробная инструкция — в PDF (платно).
     </div>
   `;
 }
@@ -64,4 +135,3 @@ function calculate() {
 
 </body>
 </html>
-
