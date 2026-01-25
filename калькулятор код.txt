@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <title>Сколько вы реально переплатите</title>
+  <style>
+    body { font-family: Arial, sans-serif; background:#f6f6f6; }
+    .box { max-width:420px; margin:40px auto; background:#fff; padding:20px; border-radius:8px; }
+    h1 { font-size:20px; margin-bottom:10px; }
+    label { display:block; margin-top:10px; }
+    input { width:100%; padding:8px; margin-top:5px; }
+    button { margin-top:15px; padding:10px; width:100%; font-size:16px; cursor:pointer; }
+    .result { margin-top:15px; background:#eef; padding:10px; border-radius:6px; }
+    .paywall { margin-top:15px; background:#ffe; padding:10px; border-radius:6px; }
+  </style>
+</head>
+<body>
+
+<div class="box">
+  <h1>Сколько вы реально переплатите</h1>
+
+  <label>Сумма кредита</label>
+  <input type="number" id="amount">
+
+  <label>Годовая ставка (%)</label>
+  <input type="number" id="rate">
+
+  <label>Срок (в месяцах)</label>
+  <input type="number" id="months">
+
+  <button onclick="calculate()">Посчитать</button>
+
+  <div id="output"></div>
+</div>
+
+<script>
+function calculate() {
+  let P = parseFloat(document.getElementById("amount").value);
+  let r = parseFloat(document.getElementById("rate").value) / 100 / 12;
+  let n = parseInt(document.getElementById("months").value);
+
+  if (!P || !r || !n) {
+    alert("Заполните все поля");
+    return;
+  }
+
+  let payment = P * r / (1 - Math.pow(1 + r, -n));
+  let total = payment * n;
+  let overpay = total - P;
+
+  document.getElementById("output").innerHTML = `
+    <div class="result">
+      <b>Ежемесячный платёж:</b> ${payment.toFixed(2)}<br>
+      <b>Переплата:</b> ${overpay.toFixed(2)}
+    </div>
+
+    <div class="paywall">
+      <b>Хотите подробный расчёт?</b><br>
+      Таблица платежей, сравнение вариантов и PDF — после оплаты.
+    </div>
+  `;
+}
+</script>
+
+</body>
+</html>
