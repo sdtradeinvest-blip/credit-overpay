@@ -69,7 +69,7 @@
       margin-bottom: 20px;
     }
 
-    .pay-top a {
+    .pay-btn {
       display: inline-block;
       background: #ff5a3c;
       color: #fff;
@@ -80,99 +80,10 @@
       font-size: 16px;
     }
 
-    .pay-top a:hover {
+    .pay-btn:hover {
       opacity: 0.9;
     }
 
     label {
       display: block;
-      margin-top: 15px;
-      font-weight: bold;
-    }
-
-    input {
-      width: 100%;
-      padding: 10px;
-      margin-top: 5px;
-      font-size: 16px;
-    }
-
-    button.calc-btn {
-      width: 100%;
-      margin-top: 20px;
-      padding: 14px;
-      font-size: 16px;
-      cursor: pointer;
-      border: none;
-      border-radius: 6px;
-      background: #007bff;
-      color: #fff;
-    }
-
-    .result {
-      margin-top: 20px;
-      padding: 15px;
-      background: #eef2f5;
-      border-radius: 6px;
-      font-size: 16px;
-    }
-  </style>
-</head>
-
-<body>
-
-<div class="container">
-  <h1>Сколько вы реально переплачиваете банку?</h1>
-  <div class="subtitle">
-    Этот калькулятор за 10 секунд покажет реальную переплату по кредиту
-    и подскажет, как снизить её законным способом.
-  </div>
-
-  <!-- КНОПКА ОПЛАТЫ НА ПЕРВОМ ЭКРАНЕ -->
-  <div class="pay-top">
-    <a href="https://monecle.com/buy/93172" target="_blank">
-      Получить PDF-отчёт и способы снижения переплаты
-    </a>
-  </div>
-
-  <label>Сумма кредита (₽)</label>
-  <input type="number" id="amount" placeholder="Например: 1 000 000">
-
-  <label>Процентная ставка (% годовых)</label>
-  <input type="number" id="rate" placeholder="Например: 14">
-
-  <label>Срок кредита (месяцы)</label>
-  <input type="number" id="months" placeholder="Например: 60">
-
-  <button class="calc-btn" onclick="calculate()">Рассчитать переплату</button>
-
-  <div id="result" class="result" style="display:none;"></div>
-</div>
-
-<script>
-  function calculate() {
-    const amount = parseFloat(document.getElementById("amount").value);
-    const rate = parseFloat(document.getElementById("rate").value);
-    const months = parseFloat(document.getElementById("months").value);
-
-    if (!amount || !rate || !months) {
-      alert("Заполните все поля");
-      return;
-    }
-
-    const monthlyRate = rate / 100 / 12;
-    const payment = amount * (monthlyRate / (1 - Math.pow(1 + monthlyRate, -months)));
-    const totalPayment = payment * months;
-    const overpay = totalPayment - amount;
-
-    const result = document.getElementById("result");
-    result.style.display = "block";
-    result.innerHTML = `
-      <strong>Ежемесячный платёж:</strong> ${payment.toFixed(2)} ₽<br>
-      <strong>Итоговая переплата:</strong> ${overpay.toFixed(2)} ₽
-    `;
-  }
-</script>
-
-</body>
-</html>
+      margin-to
