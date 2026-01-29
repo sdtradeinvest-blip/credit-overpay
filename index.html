@@ -1,93 +1,16 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-<meta charset="UTF-8">
-<title>Калькулятор переплаты по кредиту</title>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <title>Калькулятор переплаты по кредиту</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<!-- Yandex.Metrika -->
-<script type="text/javascript">
-(function(m,e,t,r,i,k,a){
-m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
-m[i].l=1*new Date();
-for (var j=0;j<document.scripts.length;j++){if(document.scripts[j].src===r){return;}}
-k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)
-})(window, document,'script','https://mc.yandex.ru/metrika/tag.js?id=106518146','ym');
-ym(106518146,'init',{clickmap:true,trackLinks:true,accurateTrackBounce:true,webvisor:true});
-</script>
-<noscript><img src="https://mc.yandex.ru/watch/106518146" style="position:absolute;left:-9999px"></noscript>
-
-<style>
-body{font-family:Arial;background:#f5f7fa;padding:20px}
-.card{max-width:480px;margin:auto;background:#fff;padding:25px;border-radius:12px;box-shadow:0 10px 25px rgba(0,0,0,.08)}
-h1{font-size:22px;margin-bottom:10px}
-.subtitle{font-size:14px;color:#555;margin-bottom:20px}
-.pay-btn{display:block;text-align:center;background:#ff5a3c;color:#fff;padding:14px;border-radius:8px;font-weight:bold;text-decoration:none;margin-bottom:20px}
-label{font-size:14px;display:block;margin-top:10px}
-input{width:100%;padding:10px;margin-top:5px;margin-bottom:15px;font-size:16px}
-button{width:100%;padding:14px;font-size:16px;background:#0d6efd;color:#fff;border:none;border-radius:8px;cursor:pointer}
-.result{margin-top:25px;display:none}
-.result strong{font-size:20px}
-</style>
-</head>
-
-<body>
-
-<div class="card">
-<h1>Сколько вы реально переплачиваете банку?</h1>
-<div class="subtitle">Узнайте переплату и как снизить её законно</div>
-
-<a class="pay-btn" href="https://monecle.com/buy/93172" target="_blank">
-Получить PDF-отчёт и способы снижения переплаты
-</a>
-
-<label>Сумма кредита (₽)</label>
-<input id="sum" type="number" placeholder="1 000 000">
-
-<label>Процентная ставка (% годовых)</label>
-<input id="rate" type="number" placeholder="14">
-
-<label>Срок кредита (мес.)</label>
-<input id="months" type="number" placeholder="60">
-
-<button id="calcBtn">Рассчитать переплату</button>
-
-<div id="result" class="result">
-<p>Ваша переплата:</p>
-<strong id="overpay"></strong>
-
-<a class="pay-btn" href="https://monecle.com/buy/93172" target="_blank">
-Забрать PDF-отчёт и решения
-</a>
-</div>
-</div>
-
-<script>
-document.getElementById('calcBtn').addEventListener('click', function () {
-const sum = Number(document.getElementById('sum').value);
-const rate = Number(document.getElementById('rate').value) / 100 / 12;
-const months = Number(document.getElementById('months').value);
-
-if (!sum || !rate || !months) {
-alert('Заполните все поля');
-return;
-}
-
-const payment = sum * (rate / (1 - Math.pow(1 + rate, -months)));
-const total = payment * months;
-const overpay = Math.round(total - sum);
-
-document.getElementById('overpay').innerText =
-overpay.toLocaleString('ru-RU') + ' ₽';
-
-document.getElementById('result').style.display = 'block';
-
-if (window.ym) {
-ym(106518146,'reachGoal','calc_done');
-}
-});
-</script>
-
-</body>
-</html>
-
+    <!-- Yandex.Metrika counter -->
+    <script type="text/javascript">
+        (function(m,e,t,r,i,k,a){
+            m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+            m[i].l=1*new Date();
+            for (var j = 0; j < document.scripts.length; j++) {
+                if (document.scripts[j].src === r) { return; }
+            }
+            k=e.createElement(t),a
