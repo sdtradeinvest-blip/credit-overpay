@@ -1,16 +1,103 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-    <meta charset="UTF-8">
-    <title>Калькулятор переплаты по кредиту</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<title>Калькулятор переплаты по кредиту</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <!-- Yandex.Metrika counter -->
-    <script type="text/javascript">
-        (function(m,e,t,r,i,k,a){
-            m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
-            m[i].l=1*new Date();
-            for (var j = 0; j < document.scripts.length; j++) {
-                if (document.scripts[j].src === r) { return; }
-            }
-            k=e.createElement(t),a
+<!-- Yandex.Metrika -->
+<script>
+(function(m,e,t,r,i,k,a){
+    m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+    m[i].l=1*new Date();
+    k=e.createElement(t); a=e.getElementsByTagName(t)[0];
+    k.async=1; k.src=r; a.parentNode.insertBefore(k,a);
+})(window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
+
+ym(106518146, "init", {
+    clickmap:true,
+    trackLinks:true,
+    accurateTrackBounce:true,
+    webvisor:true
+});
+</script>
+<noscript>
+<img src="https://mc.yandex.ru/watch/106518146" style="position:absolute;left:-9999px;" alt="">
+</noscript>
+<!-- /Yandex.Metrika -->
+
+<style>
+body{
+    font-family: Arial, sans-serif;
+    background:#f4f6f8;
+    margin:0;
+    padding:20px;
+}
+.container{
+    max-width:520px;
+    margin:auto;
+    background:#fff;
+    padding:25px;
+    border-radius:12px;
+    box-shadow:0 10px 25px rgba(0,0,0,.1);
+}
+h1{font-size:24px;margin-bottom:10px;}
+p{color:#555;}
+
+.pay-btn{
+    display:block;
+    background:#ff5a3c;
+    color:#fff;
+    text-align:center;
+    padding:14px;
+    border-radius:8px;
+    text-decoration:none;
+    font-weight:bold;
+    margin:20px 0;
+}
+
+label{display:block;margin-top:15px;font-weight:bold;}
+input{
+    width:100%;
+    padding:10px;
+    margin-top:5px;
+    font-size:16px;
+}
+
+.calc-btn{
+    margin-top:20px;
+    width:100%;
+    padding:14px;
+    font-size:16px;
+    background:#0b73ff;
+    color:#fff;
+    border:none;
+    border-radius:8px;
+    cursor:pointer;
+}
+
+.result{
+    display:none;
+    margin-top:20px;
+    padding:15px;
+    background:#eef3ff;
+    border-radius:8px;
+}
+
+.cta{
+    display:none;
+    margin-top:20px;
+    text-align:center;
+}
+
+.note{
+    font-size:13px;
+    color:#666;
+    margin-top:8px;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
