@@ -1,103 +1,184 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-<meta charset="UTF-8">
-<title>Калькулятор переплаты по кредиту</title>
-<meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="UTF-8">
+    <title>Калькулятор переплаты по кредиту</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<!-- Yandex.Metrika -->
-<script>
-(function(m,e,t,r,i,k,a){
-    m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
-    m[i].l=1*new Date();
-    k=e.createElement(t); a=e.getElementsByTagName(t)[0];
-    k.async=1; k.src=r; a.parentNode.insertBefore(k,a);
-})(window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
+    <!-- Yandex.Metrika counter -->
+    <script type="text/javascript">
+        (function(m,e,t,r,i,k,a){
+            m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+            m[i].l=1*new Date();
+            k=e.createElement(t),a=e.getElementsByTagName(t)[0];
+            k.async=1;k.src=r;a.parentNode.insertBefore(k,a)
+        })(window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
 
-ym(106518146, "init", {
-    clickmap:true,
-    trackLinks:true,
-    accurateTrackBounce:true,
-    webvisor:true
-});
-</script>
-<noscript>
-<img src="https://mc.yandex.ru/watch/106518146" style="position:absolute;left:-9999px;" alt="">
-</noscript>
-<!-- /Yandex.Metrika -->
+        ym(106518146, "init", {
+            clickmap:true,
+            trackLinks:true,
+            accurateTrackBounce:true,
+            webvisor:true
+        });
+    </script>
+    <noscript>
+        <img src="https://mc.yandex.ru/watch/106518146" style="position:absolute; left:-9999px;" alt="">
+    </noscript>
+    <!-- /Yandex.Metrika -->
 
-<style>
-body{
-    font-family: Arial, sans-serif;
-    background:#f4f6f8;
-    margin:0;
-    padding:20px;
-}
-.container{
-    max-width:520px;
-    margin:auto;
-    background:#fff;
-    padding:25px;
-    border-radius:12px;
-    box-shadow:0 10px 25px rgba(0,0,0,.1);
-}
-h1{font-size:24px;margin-bottom:10px;}
-p{color:#555;}
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f4f6f8;
+            margin: 0;
+            padding: 20px;
+        }
 
-.pay-btn{
-    display:block;
-    background:#ff5a3c;
-    color:#fff;
-    text-align:center;
-    padding:14px;
-    border-radius:8px;
-    text-decoration:none;
-    font-weight:bold;
-    margin:20px 0;
-}
+        .container {
+            max-width: 520px;
+            margin: auto;
+            background: #ffffff;
+            padding: 24px;
+            border-radius: 12px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
 
-label{display:block;margin-top:15px;font-weight:bold;}
-input{
-    width:100%;
-    padding:10px;
-    margin-top:5px;
-    font-size:16px;
-}
+        h1 {
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
 
-.calc-btn{
-    margin-top:20px;
-    width:100%;
-    padding:14px;
-    font-size:16px;
-    background:#0b73ff;
-    color:#fff;
-    border:none;
-    border-radius:8px;
-    cursor:pointer;
-}
+        p {
+            color: #555;
+        }
 
-.result{
-    display:none;
-    margin-top:20px;
-    padding:15px;
-    background:#eef3ff;
-    border-radius:8px;
-}
+        .pay-btn {
+            display: block;
+            background: #ff5a3c;
+            color: #fff;
+            text-align: center;
+            padding: 14px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: bold;
+            margin: 20px 0;
+        }
 
-.cta{
-    display:none;
-    margin-top:20px;
-    text-align:center;
-}
+        label {
+            display: block;
+            margin-top: 14px;
+            font-weight: bold;
+        }
 
-.note{
-    font-size:13px;
-    color:#666;
-    margin-top:8px;
-}
-</style>
+        input {
+            width: 100%;
+            padding: 10px;
+            margin-top: 6px;
+            font-size: 16px;
+            box-sizing: border-box;
+        }
+
+        button {
+            margin-top: 20px;
+            width: 100%;
+            padding: 14px;
+            font-size: 16px;
+            background: #0b73ff;
+            color: #fff;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+        }
+
+        .result {
+            display: none;
+            margin-top: 20px;
+            padding: 15px;
+            background: #eef3ff;
+            border-radius: 8px;
+        }
+
+        .cta {
+            display: none;
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        .note {
+            font-size: 13px;
+            color: #666;
+            margin-top: 8px;
+        }
+    </style>
 </head>
 
 <body>
 
 <div class="container">
+    <h1>Сколько вы реально переплачиваете банку?</h1>
+    <p>
+        Этот калькулятор за 10 секунд покажет реальную переплату по кредиту
+        и подскажет, как снизить её законными способами.
+    </p>
+
+    <!-- КНОПКА ПЕРВОГО ЭКРАНА -->
+    <a class="pay-btn" href="https://monecle.com/buy/93172">
+        Получить PDF-отчёт и способы снижения переплаты
+    </a>
+
+    <label>Сумма кредита (₽)</label>
+    <input id="sum" type="number" placeholder="Например: 1 000 000">
+
+    <label>Процентная ставка (% годовых)</label>
+    <input id="rate" type="number" placeholder="Например: 14">
+
+    <label>Срок кредита (месяцы)</label>
+    <input id="months" type="number" placeholder="Например: 60">
+
+    <button onclick="calculate()">Рассчитать переплату</button>
+
+    <div class="result" id="result">
+        <div>Ежемесячный платёж: <b><span id="payment"></span> ₽</b></div>
+        <div>Переплата банку: <b><span id="overpay"></span> ₽</b></div>
+    </div>
+
+    <!-- ВТОРАЯ КНОПКА -->
+    <div class="cta" id="cta">
+        <p><b>Эту сумму можно снизить законными способами</b></p>
+        <a class="pay-btn" href="https://monecle.com/buy/93172">
+            Скачать PDF-отчёт
+        </a>
+        <div class="note">PDF доступен сразу после оплаты. Без подписок.</div>
+    </div>
+</div>
+
+<script>
+function calculate() {
+    var sum = Number(document.getElementById('sum').value);
+    var rate = Number(document.getElementById('rate').value) / 100 / 12;
+    var months = Number(document.getElementById('months').value);
+
+    if (!sum || !rate || !months) {
+        alert('Заполните все поля');
+        return;
+    }
+
+    var payment = sum * rate / (1 - Math.pow(1 + rate, -months));
+    var total = payment * months;
+    var overpay = total - sum;
+
+    document.getElementById('payment').textContent = payment.toFixed(2);
+    document.getElementById('overpay').textContent = overpay.toFixed(2);
+
+    document.getElementById('result').style.display = 'block';
+    document.getElementById('cta').style.display = 'block';
+
+    if (typeof ym === 'function') {
+        ym(106518146, 'reachGoal', 'calc_done');
+    }
+}
+</script>
+
+</body>
+</html>
+
