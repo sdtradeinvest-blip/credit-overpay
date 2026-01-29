@@ -2,135 +2,176 @@
 <html lang="ru">
 <head>
   <meta charset="UTF-8">
-  <title>Переплата по кредиту — калькулятор</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Калькулятор переплаты по кредиту</title>
+
+  <!-- Yandex.Metrika counter -->
+  <script type="text/javascript">
+    (function(m,e,t,r,i,k,a){
+        m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+        m[i].l=1*new Date();
+        for (var j = 0; j < document.scripts.length; j++) {
+            if (document.scripts[j].src === r) { return; }
+        }
+        k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)
+    })(window, document,'script','https://mc.yandex.ru/metrika/tag.js?id=106518146', 'ym');
+
+    ym(106518146, 'init', {
+        ssr:true,
+        webvisor:true,
+        clickmap:true,
+        ecommerce:"dataLayer",
+        referrer: document.referrer,
+        url: location.href,
+        accurateTrackBounce:true,
+        trackLinks:true
+    });
+  </script>
+  <noscript>
+    <div>
+      <img src="https://mc.yandex.ru/watch/106518146" style="position:absolute; left:-9999px;" alt="" />
+    </div>
+  </noscript>
+  <!-- /Yandex.Metrika counter -->
 
   <style>
     body {
       font-family: Arial, sans-serif;
-      background: #f6f6f6;
+      background: #f4f6f8;
       margin: 0;
-      padding: 0;
+      padding: 20px;
     }
 
-    .box {
-      max-width: 420px;
-      margin: 40px auto;
+    .container {
+      max-width: 520px;
+      margin: auto;
       background: #ffffff;
       padding: 20px;
-      border-radius: 8px;
+      border-radius: 10px;
+      box-shadow: 0 0 12px rgba(0,0,0,0.1);
     }
 
     h1 {
       font-size: 22px;
+      text-align: center;
       margin-bottom: 10px;
     }
 
-    h2 {
-      font-size: 20px;
-      margin-bottom: 10px;
-    }
-
-    p {
+    .subtitle {
       font-size: 14px;
-      line-height: 1.4;
+      text-align: center;
+      color: #555;
+      margin-bottom: 15px;
+    }
+
+    .pay-top {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    .pay-top a {
+      display: inline-block;
+      background: #ff5a3c;
+      color: #fff;
+      padding: 14px 22px;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: bold;
+      font-size: 16px;
+    }
+
+    .pay-top a:hover {
+      opacity: 0.9;
     }
 
     label {
       display: block;
-      margin-top: 10px;
-      font-size: 14px;
+      margin-top: 15px;
+      font-weight: bold;
     }
 
     input {
       width: 100%;
-      padding: 8px;
+      padding: 10px;
       margin-top: 5px;
+      font-size: 16px;
     }
 
-    button {
-      margin-top: 15px;
-      padding: 10px;
+    button.calc-btn {
       width: 100%;
+      margin-top: 20px;
+      padding: 14px;
       font-size: 16px;
       cursor: pointer;
+      border: none;
+      border-radius: 6px;
+      background: #007bff;
+      color: #fff;
     }
 
     .result {
-      margin-top: 15px;
-      background: #eef;
-      padding: 10px;
+      margin-top: 20px;
+      padding: 15px;
+      background: #eef2f5;
       border-radius: 6px;
-    }
-
-    .paywall {
-      margin-top: 15px;
-      background: #ffe;
-      padding: 10px;
-      border-radius: 6px;
-      font-size: 14px;
+      font-size: 16px;
     }
   </style>
 </head>
 
 <body>
 
-<div class="box">
-
-  <h2>Сколько вы реально переплачиваете банку?</h2>
-  <p>
-    Большинство людей не понимают, сколько денег теряют на процентах.
+<div class="container">
+  <h1>Сколько вы реально переплачиваете банку?</h1>
+  <div class="subtitle">
     Этот калькулятор за 10 секунд покажет реальную переплату по кредиту
     и подскажет, как снизить её законным способом.
-  </p>
+  </div>
 
-  <h1>Калькулятор переплаты по кредиту</h1>
+  <!-- КНОПКА ОПЛАТЫ НА ПЕРВОМ ЭКРАНЕ -->
+  <div class="pay-top">
+    <a href="https://monecle.com/buy/93172" target="_blank">
+      Получить PDF-отчёт и способы снижения переплаты
+    </a>
+  </div>
 
   <label>Сумма кредита (₽)</label>
-  <input id="sum" type="number" placeholder="Например: 500000">
+  <input type="number" id="amount" placeholder="Например: 1 000 000">
 
   <label>Процентная ставка (% годовых)</label>
-  <input id="rate" type="number" placeholder="Например: 18">
+  <input type="number" id="rate" placeholder="Например: 14">
 
   <label>Срок кредита (месяцы)</label>
-  <input id="months" type="number" placeholder="Например: 60">
+  <input type="number" id="months" placeholder="Например: 60">
 
-  <button onclick="calc()">Рассчитать</button>
+  <button class="calc-btn" onclick="calculate()">Рассчитать переплату</button>
 
-  <div id="output"></div>
-
-  <p><b>Важно:</b> если переплата кажется слишком большой — это не ошибка.
-  Банк зарабатывает именно так.</p>
-
+  <div id="result" class="result" style="display:none;"></div>
 </div>
 
 <script>
-function calc() {
-  let P = Number(document.getElementById("sum").value);
-  let r = Number(document.getElementById("rate").value) / 100 / 12;
-  let n = Number(document.getElementById("months").value);
+  function calculate() {
+    const amount = parseFloat(document.getElementById("amount").value);
+    const rate = parseFloat(document.getElementById("rate").value);
+    const months = parseFloat(document.getElementById("months").value);
 
-  if (!P || !r || !n) {
-    document.getElementById("output").innerHTML = "Заполните все поля";
-    return;
+    if (!amount || !rate || !months) {
+      alert("Заполните все поля");
+      return;
+    }
+
+    const monthlyRate = rate / 100 / 12;
+    const payment = amount * (monthlyRate / (1 - Math.pow(1 + monthlyRate, -months)));
+    const totalPayment = payment * months;
+    const overpay = totalPayment - amount;
+
+    const result = document.getElementById("result");
+    result.style.display = "block";
+    result.innerHTML = `
+      <strong>Ежемесячный платёж:</strong> ${payment.toFixed(2)} ₽<br>
+      <strong>Итоговая переплата:</strong> ${overpay.toFixed(2)} ₽
+    `;
   }
-
-  let payment = P * r / (1 - Math.pow(1 + r, -n));
-  let total = payment * n;
-  let overpay = total - P;
-
-  document.getElementById("output").innerHTML = `
-    <div class="result">
-      <b>Ежемесячный платёж:</b> ${payment.toFixed(2)} ₽<br>
-      <b>Переплата:</b> ${overpay.toFixed(2)} ₽
-    </div>
-
-    <div class="paywall">
-      <b>Как снизить переплату:</b><br>
-      Есть законные способы уменьшить проценты.
-      Подробная инструкция — в PDF (платно).
-    </div>
-  `;
-}
 </script>
 
 </body>
